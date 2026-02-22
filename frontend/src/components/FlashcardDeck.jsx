@@ -23,14 +23,14 @@ const Flashcard = ({ card, index, total }) => {
         </div>
 
         {/* Back */}
-        <div className="flashcard-back w-full h-full rounded-2xl bg-white border-2 border-brand-200 p-6 flex flex-col items-center justify-center shadow-lg">
-          <p className="text-xs font-medium uppercase tracking-wider text-brand-500 mb-3">
+        <div className="flashcard-back w-full h-full rounded-2xl bg-white dark:bg-gray-800 border-2 border-brand-200 dark:border-brand-700 p-6 flex flex-col items-center justify-center shadow-lg">
+          <p className="text-xs font-medium uppercase tracking-wider text-brand-500 dark:text-brand-400 mb-3">
             Answer
           </p>
-          <p className="text-base text-gray-800 text-center leading-relaxed font-medium">
+          <p className="text-base text-gray-800 dark:text-gray-100 text-center leading-relaxed font-medium">
             {card.back}
           </p>
-          <p className="text-xs text-gray-400 mt-4">Click to flip back</p>
+          <p className="text-xs text-gray-400 dark:text-gray-500 mt-4">Click to flip back</p>
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@ const FlashcardDeck = ({ flashcards = [] }) => {
     <div>
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 dark:text-gray-400">
           {cards.length} flashcards
         </p>
         <div className="flex gap-2">
@@ -115,11 +115,11 @@ const FlashcardDeck = ({ flashcards = [] }) => {
               key={i}
               onClick={() => { setCurrentIndex(i); setKey((k) => k + 1); }}
               className={`w-2 h-2 rounded-full transition-all ${
-                i === currentIndex ? 'bg-brand-600 w-4' : 'bg-gray-300'
+                i === currentIndex ? 'bg-brand-600 w-4' : 'bg-gray-300 dark:bg-gray-600'
               }`}
             />
           ))}
-          {cards.length > 10 && <span className="text-xs text-gray-400">...</span>}
+          {cards.length > 10 && <span className="text-xs text-gray-400 dark:text-gray-500">...</span>}
         </div>
 
         <button
@@ -132,7 +132,7 @@ const FlashcardDeck = ({ flashcards = [] }) => {
         </button>
       </div>
 
-      <p className="text-center text-xs text-gray-400 mt-3">
+      <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-3">
         Card {currentIndex + 1} of {cards.length}
       </p>
     </div>

@@ -80,7 +80,7 @@ const VideoDetailsPage = () => {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16 text-center">
         <div className="w-8 h-8 border-2 border-brand-600 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-        <p className="text-sm text-gray-500">Loading analysis...</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">Loading analysis...</p>
       </div>
     );
   }
@@ -89,8 +89,8 @@ const VideoDetailsPage = () => {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16 text-center">
         <div className="text-5xl mb-4">😕</div>
-        <h2 className="text-xl font-bold text-gray-900 mb-2">Analysis Not Found</h2>
-        <p className="text-gray-500 mb-6">{error || 'Could not load this analysis.'}</p>
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Analysis Not Found</h2>
+        <p className="text-gray-500 dark:text-gray-400 mb-6">{error || 'Could not load this analysis.'}</p>
         <button onClick={() => navigate('/')} className="btn-primary">
           <ArrowLeft className="w-4 h-4" />
           Analyze a new video
@@ -104,7 +104,7 @@ const VideoDetailsPage = () => {
       {/* Back button */}
       <button
         onClick={() => navigate(-1)}
-        className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 mb-6 transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 mb-6 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         Back
@@ -115,7 +115,7 @@ const VideoDetailsPage = () => {
         <div className="flex flex-col sm:flex-row gap-4">
           {/* Thumbnail */}
           {analysis.thumbnail && (
-            <div className="flex-shrink-0 w-full sm:w-36 h-auto sm:h-[81px] rounded-xl overflow-hidden bg-gray-100">
+            <div className="flex-shrink-0 w-full sm:w-36 h-auto sm:h-[81px] rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
               <img
                 src={analysis.thumbnail}
                 alt={analysis.title}
@@ -126,7 +126,7 @@ const VideoDetailsPage = () => {
           )}
 
           <div className="flex-1 min-w-0">
-            <h1 className="text-xl font-bold text-gray-900 leading-tight mb-2">
+            <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-tight mb-2">
               {analysis.title}
             </h1>
 
@@ -144,17 +144,17 @@ const VideoDetailsPage = () => {
 
               {/* Stats chips */}
               {analysis.notes?.length > 0 && (
-                <span className="badge bg-blue-50 text-blue-700">
+                <span className="badge bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
                   📝 {analysis.notes.length} notes
                 </span>
               )}
               {analysis.quiz?.length > 0 && (
-                <span className="badge bg-purple-50 text-purple-700">
+                <span className="badge bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">
                   ❓ {analysis.quiz.length} questions
                 </span>
               )}
               {analysis.flashcards?.length > 0 && (
-                <span className="badge bg-green-50 text-green-700">
+                <span className="badge bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300">
                   🃏 {analysis.flashcards.length} cards
                 </span>
               )}
@@ -181,15 +181,15 @@ const VideoDetailsPage = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 p-1 bg-gray-100 rounded-xl mb-6 overflow-x-auto">
+      <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-xl mb-6 overflow-x-auto">
         {TABS.map(({ id, label, icon: Icon }) => (
           <button
             key={id}
             onClick={() => setActiveTab(id)}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200 flex-1 justify-center ${
               activeTab === id
-                ? 'bg-white text-brand-600 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-white dark:bg-gray-700 text-brand-600 dark:text-brand-400 shadow-sm'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             <Icon className="w-4 h-4" />
@@ -213,7 +213,7 @@ const VideoDetailsPage = () => {
                 {summaryCopied ? 'Copied!' : 'Copy'}
               </button>
             </div>
-            <p className="text-gray-700 leading-relaxed text-base mb-8">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base mb-8">
               {analysis.summary}
             </p>
 
@@ -221,15 +221,15 @@ const VideoDetailsPage = () => {
               <>
                 <div className="flex items-center gap-2 mb-4">
                   <Lightbulb className="w-5 h-5 text-amber-500" />
-                  <h3 className="text-lg font-bold text-gray-900">Key Takeaways</h3>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Key Takeaways</h3>
                 </div>
                 <ul className="space-y-2">
                   {analysis.keyTakeaways.map((point, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-xs font-bold flex items-center justify-center mt-0.5">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold flex items-center justify-center mt-0.5">
                         {i + 1}
                       </span>
-                      <p className="text-gray-700 text-sm leading-relaxed">{point}</p>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{point}</p>
                     </li>
                   ))}
                 </ul>
@@ -245,7 +245,7 @@ const VideoDetailsPage = () => {
               <BookOpen className="w-5 h-5 text-brand-600" />
               <h2 className="section-title">Timestamped Notes</h2>
             </div>
-            <p className="text-sm text-gray-500 mb-5">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
               Click any timestamp to jump to that moment in the YouTube video.
             </p>
             <NotesList notes={analysis.notes} videoId={videoId} />
@@ -270,7 +270,7 @@ const VideoDetailsPage = () => {
               <Layers className="w-5 h-5 text-brand-600" />
               <h2 className="section-title">Flashcards</h2>
             </div>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
               Click a card to flip it and reveal the answer.
             </p>
             <FlashcardDeck flashcards={analysis.flashcards} />

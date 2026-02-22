@@ -32,7 +32,7 @@ const NotesList = ({ notes = [], videoId }) => {
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <p className="text-sm text-gray-500">{notes.length} notes</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">{notes.length} notes</p>
         <button onClick={handleCopyAll} className="btn-secondary text-xs py-1.5">
           <Copy className="w-3.5 h-3.5" />
           Copy all
@@ -43,7 +43,7 @@ const NotesList = ({ notes = [], videoId }) => {
         {notes.map((note, index) => (
           <div
             key={index}
-            className="group flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100"
+            className="group flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
           >
             {/* Timestamp button */}
             <a
@@ -51,7 +51,7 @@ const NotesList = ({ notes = [], videoId }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-600 text-xs font-mono font-semibold transition-colors"
+              className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand-50 dark:bg-brand-900/20 hover:bg-brand-100 dark:hover:bg-brand-900/30 text-brand-600 dark:text-brand-400 text-xs font-mono font-semibold transition-colors"
               title={`Open YouTube at ${note.timestamp}`}
             >
               {note.timestamp}
@@ -59,7 +59,7 @@ const NotesList = ({ notes = [], videoId }) => {
             </a>
 
             {/* Note text */}
-            <p className="flex-1 text-sm text-gray-700 leading-relaxed pt-0.5">
+            <p className="flex-1 text-sm text-gray-700 dark:text-gray-300 leading-relaxed pt-0.5">
               {note.text}
             </p>
 

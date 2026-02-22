@@ -63,13 +63,13 @@ const HomePage = () => {
         {/* Hero */}
         <div className="text-center mb-12 animate-[fadeIn_0.5s_ease-out]">
 
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
             Turn any YouTube video into
             <br />
             <span className="text-brand-600">smart study materials</span>
           </h1>
 
-          <p className="text-lg text-gray-500 max-w-xl mx-auto">
+          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             Paste a YouTube URL and get smart summaries, timestamped notes,
             interactive quizzes, and flashcards — instantly.
           </p>
@@ -78,7 +78,7 @@ const HomePage = () => {
         {/* URL Input Form */}
         <div className="card p-6 mb-6 animate-[slideUp_0.4s_ease-out]">
           <form onSubmit={handleSubmit}>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
               YouTube Video URL
             </label>
 
@@ -90,10 +90,10 @@ const HomePage = () => {
                   value={url}
                   onChange={(e) => { setUrl(e.target.value); setError(''); }}
                   placeholder="https://www.youtube.com/watch?v=..."
-                  className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 outline-none text-sm transition-colors ${
+                  className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 outline-none text-sm transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 ${
                     error
-                      ? 'border-red-300 focus:border-red-400'
-                      : 'border-gray-200 focus:border-brand-400'
+                      ? 'border-red-300 focus:border-red-400 dark:border-red-500'
+                      : 'border-gray-200 focus:border-brand-400 dark:border-gray-700 dark:focus:border-brand-500'
                   }`}
                   disabled={loading}
                 />
@@ -110,13 +110,13 @@ const HomePage = () => {
             </div>
 
             {error && (
-              <div className="flex items-start gap-2 mt-3 p-3 rounded-lg bg-red-50 border border-red-100 text-red-700 text-sm">
+              <div className="flex items-start gap-2 mt-3 p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 text-red-700 dark:text-red-400 text-sm">
                 <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
                 <p>{error}</p>
               </div>
             )}
 
-            <p className="text-xs text-gray-400 mt-3">
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
               Supports: youtube.com/watch?v=... and youtu.be/... links
             </p>
           </form>
@@ -147,15 +147,15 @@ const HomePage = () => {
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               <div className="text-2xl mb-2">{f.icon}</div>
-              <h3 className="font-semibold text-gray-900 mb-1">{f.title}</h3>
-              <p className="text-sm text-gray-500">{f.desc}</p>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{f.title}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{f.desc}</p>
             </div>
           ))}
         </div>
 
         {/* How it works */}
         <div className="mt-14 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">How it works</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">How it works</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
               { step: '1', icon: '🔗', title: 'Paste URL', desc: 'Copy any YouTube video URL and paste it above.' },
@@ -167,8 +167,8 @@ const HomePage = () => {
                   {item.step}
                 </div>
                 <div className="text-2xl mb-2">{item.icon}</div>
-                <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
-                <p className="text-sm text-gray-500">{item.desc}</p>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-1">{item.title}</h4>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{item.desc}</p>
               </div>
             ))}
           </div>

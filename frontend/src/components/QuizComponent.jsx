@@ -70,8 +70,8 @@ const QuizComponent = ({ quiz = [] }) => {
         <div className="text-6xl mb-4">
           {pct >= 80 ? '🏆' : pct >= 60 ? '⭐' : '📖'}
         </div>
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">{grade}</h3>
-        <p className="text-gray-600 mb-1">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{grade}</h3>
+        <p className="text-gray-600 dark:text-gray-300 mb-1">
           You answered{' '}
           <span className="font-bold text-brand-600">{correctCount}</span> out of{' '}
           <span className="font-bold">{totalQuestions}</span> correctly
@@ -79,7 +79,7 @@ const QuizComponent = ({ quiz = [] }) => {
         <p className="text-3xl font-bold text-brand-600 mb-8">{pct}%</p>
 
         {/* Score bar */}
-        <div className="w-48 mx-auto h-3 bg-gray-100 rounded-full overflow-hidden mb-8">
+        <div className="w-48 mx-auto h-3 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden mb-8">
           <div
             className="h-full rounded-full bg-brand-600 transition-all duration-1000"
             style={{ width: `${pct}%` }}
@@ -96,29 +96,29 @@ const QuizComponent = ({ quiz = [] }) => {
 
   const getOptionClass = (letter) => {
     if (!selected) {
-      return 'border-gray-200 hover:border-brand-300 hover:bg-brand-50 cursor-pointer';
+      return 'border-gray-200 dark:border-gray-600 hover:border-brand-300 hover:bg-brand-50 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-brand-500 dark:hover:text-white cursor-pointer text-gray-900 dark:text-gray-100';
     }
     if (letter === question.answer) {
-      return 'border-green-400 bg-green-50 text-green-800';
+      return 'border-green-400 dark:border-green-500 bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-300';
     }
     if (letter === selected && letter !== question.answer) {
-      return 'border-red-400 bg-red-50 text-red-800';
+      return 'border-red-400 dark:border-red-500 bg-red-50 dark:bg-red-900/30 text-red-800 dark:text-red-300';
     }
-    return 'border-gray-100 text-gray-400 cursor-default';
+    return 'border-gray-100 dark:border-gray-700 text-gray-400 dark:text-gray-600 cursor-default';
   };
 
   return (
     <div className="animate-[fadeIn_0.3s_ease-out]">
       {/* Progress */}
       <div className="flex items-center justify-between mb-4">
-        <span className="text-sm font-medium text-gray-600">
+        <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
           Question {currentIndex + 1} of {totalQuestions}
         </span>
-        <span className="text-sm text-gray-500">
+        <span className="text-sm text-gray-500 dark:text-gray-400">
           {correctCount} correct so far
         </span>
       </div>
-      <div className="w-full h-1.5 bg-gray-100 rounded-full mb-6 overflow-hidden">
+      <div className="w-full h-1.5 bg-gray-100 dark:bg-gray-700 rounded-full mb-6 overflow-hidden">
         <div
           className="h-full bg-brand-600 rounded-full transition-all duration-500"
           style={{ width: `${((currentIndex) / totalQuestions) * 100}%` }}
@@ -127,7 +127,7 @@ const QuizComponent = ({ quiz = [] }) => {
 
       {/* Question */}
       <div className="card p-5 mb-4">
-        <p className="text-gray-900 font-medium text-base leading-relaxed">
+        <p className="text-gray-900 dark:text-gray-100 font-medium text-base leading-relaxed">
           {question.question}
         </p>
       </div>
@@ -168,8 +168,8 @@ const QuizComponent = ({ quiz = [] }) => {
       {showExplanation && question.explanation && (
         <div className={`p-4 rounded-xl text-sm mb-5 animate-[slideUp_0.3s_ease-out] ${
           selected === question.answer
-            ? 'bg-green-50 border border-green-200 text-green-800'
-            : 'bg-amber-50 border border-amber-200 text-amber-800'
+            ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 text-green-800 dark:text-green-300'
+            : 'bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 text-amber-800 dark:text-amber-300'
         }`}>
           <p className="font-semibold mb-1">
             {selected === question.answer ? '✅ Correct!' : `❌ The correct answer is ${question.answer}`}
@@ -189,7 +189,7 @@ const QuizComponent = ({ quiz = [] }) => {
           Previous
         </button>
 
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-gray-400 dark:text-gray-500">
           {Object.keys(answers).length} answered
         </span>
 
